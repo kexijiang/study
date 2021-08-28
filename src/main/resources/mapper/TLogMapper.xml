@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.java.reflect.mapper.TLogMapper">
+  <resultMap id="BaseResultMap" type="cn.java.reflect.entity.TLog">
+    <!--@mbg.generated-->
+    <!--@Table t_log-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userType" jdbcType="VARCHAR" property="usertype" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+    <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, userType, ip, description, param, addTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_log (userType, ip, description, 
+      param, addTime)
+    values (#{usertype,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{param,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usertype != null">
+        userType,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="param != null">
+        param,
+      </if>
+      <if test="addtime != null">
+        addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usertype != null">
+        #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.reflect.entity.TLog">
+    <!--@mbg.generated-->
+    update t_log
+    <set>
+      <if test="usertype != null">
+        userType = #{usertype,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        param = #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.reflect.entity.TLog">
+    <!--@mbg.generated-->
+    update t_log
+    set userType = #{usertype,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      param = #{param,jdbcType=VARCHAR},
+      addTime = #{addtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

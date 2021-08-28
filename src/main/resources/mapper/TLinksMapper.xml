@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.java.reflect.mapper.TLinksMapper">
+  <resultMap id="BaseResultMap" type="cn.java.reflect.entity.TLinks">
+    <!--@mbg.generated-->
+    <!--@Table t_links-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="clickNum" jdbcType="INTEGER" property="clicknum" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="isApply" jdbcType="INTEGER" property="isapply" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, link, `name`, clickNum, sort, `status`, addTime, isApply
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_links
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_links
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TLinks" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_links (link, `name`, clickNum, 
+      sort, `status`, addTime, 
+      isApply)
+    values (#{link,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{clicknum,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{isapply,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TLinks" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_links
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="link != null">
+        link,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="clicknum != null">
+        clickNum,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="addtime != null">
+        addTime,
+      </if>
+      <if test="isapply != null">
+        isApply,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null">
+        #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isapply != null">
+        #{isapply,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.reflect.entity.TLinks">
+    <!--@mbg.generated-->
+    update t_links
+    <set>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="clicknum != null">
+        clickNum = #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isapply != null">
+        isApply = #{isapply,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.reflect.entity.TLinks">
+    <!--@mbg.generated-->
+    update t_links
+    set link = #{link,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      clickNum = #{clicknum,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      addTime = #{addtime,jdbcType=TIMESTAMP},
+      isApply = #{isapply,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

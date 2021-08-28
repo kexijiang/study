@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.java.reflect.mapper.TBlogtypeMapper">
+  <resultMap id="BaseResultMap" type="cn.java.reflect.entity.TBlogtype">
+    <!--@mbg.generated-->
+    <!--@Table t_blogtype-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="typeName" jdbcType="VARCHAR" property="typename" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, typeName, num, addTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_blogtype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_blogtype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TBlogtype" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_blogtype (typeName, num, addTime
+      )
+    values (#{typename,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TBlogtype" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_blogtype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="typename != null">
+        typeName,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="addtime != null">
+        addTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.reflect.entity.TBlogtype">
+    <!--@mbg.generated-->
+    update t_blogtype
+    <set>
+      <if test="typename != null">
+        typeName = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="addtime != null">
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.reflect.entity.TBlogtype">
+    <!--@mbg.generated-->
+    update t_blogtype
+    set typeName = #{typename,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      addTime = #{addtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

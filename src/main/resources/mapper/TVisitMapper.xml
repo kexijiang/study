@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.java.reflect.mapper.TVisitMapper">
+  <resultMap id="BaseResultMap" type="cn.java.reflect.entity.TVisit">
+    <!--@mbg.generated-->
+    <!--@Table t_visit-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="userAgent" jdbcType="VARCHAR" property="useragent" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="browserType" jdbcType="VARCHAR" property="browsertype" />
+    <result column="platformType" jdbcType="VARCHAR" property="platformtype" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, ip, userAgent, city, url, browserType, platformType, `time`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_visit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_visit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TVisit" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_visit (ip, userAgent, city, 
+      url, browserType, platformType, 
+      `time`)
+    values (#{ip,jdbcType=VARCHAR}, #{useragent,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{browsertype,jdbcType=VARCHAR}, #{platformtype,jdbcType=VARCHAR}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.java.reflect.entity.TVisit" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_visit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="useragent != null">
+        userAgent,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="browsertype != null">
+        browserType,
+      </if>
+      <if test="platformtype != null">
+        platformType,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="useragent != null">
+        #{useragent,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="browsertype != null">
+        #{browsertype,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.java.reflect.entity.TVisit">
+    <!--@mbg.generated-->
+    update t_visit
+    <set>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="useragent != null">
+        userAgent = #{useragent,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="browsertype != null">
+        browserType = #{browsertype,jdbcType=VARCHAR},
+      </if>
+      <if test="platformtype != null">
+        platformType = #{platformtype,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.java.reflect.entity.TVisit">
+    <!--@mbg.generated-->
+    update t_visit
+    set ip = #{ip,jdbcType=VARCHAR},
+      userAgent = #{useragent,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      browserType = #{browsertype,jdbcType=VARCHAR},
+      platformType = #{platformtype,jdbcType=VARCHAR},
+      `time` = #{time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
