@@ -51,5 +51,6 @@ public class FutureExample {
             return r+" world!";
         });
         System.out.println(cf.get());
+
     }
 }
