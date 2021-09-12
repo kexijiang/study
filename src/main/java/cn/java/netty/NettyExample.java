@@ -1,9 +1,7 @@
 package cn.java.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -21,12 +19,27 @@ public class NettyExample {
         EventLoopGroup boosGroup = new NioEventLoopGroup();
         //工作线程组
         EventLoopGroup workGroup = new NioEventLoopGroup(4);
+        //服务端ServerBootstrap，客户端也有ServerBootstrap
         ServerBootstrap bootstrap = new ServerBootstrap();
-        bootstrap.group(boosGroup,workGroup).channel(NioServerSocketChannel.class)
-        .childHandler(new ChannelInitializer<SocketChannel>() {
+        bootstrap.group(boosGroup,workGroup)
+                //此处可以指定很多的Channel 也可以指定epoll模型
+                .channel(NioServerSocketChannel.class)
+                .childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel socketChannel) throws Exception {
-                socketChannel.pipeline().addLast(new NormalMessageHandler());
+                socketChannel.pipeline()
+                        //多个Handler之间可以通过ChannelHandlerContext上下文类对象进行数据传输
+                        //链式调用，可以进行一系列操作
+                        //1.心跳
+                        //2.编解码
+                        //3.业务处理等等
+                        .addLast(new NormalMessageHandler())
+                .addLast(new ChannelInboundHandlerAdapter() {
+                    @Override
+                    public void channelRead(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+
+                    }
+                });
             }
         });
         try {
