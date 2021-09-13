@@ -26,4 +26,5 @@ public class SimpleServerHanler extends ChannelInboundHandlerAdapter {
         ByteBuf resp = Unpooled.copiedBuffer(UUID.randomUUID().toString().getBytes(StandardCharsets.UTF_8));
         ctx.writeAndFlush(resp);
     }
+
 }
