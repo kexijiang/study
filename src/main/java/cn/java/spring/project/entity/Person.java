@@ -1,15 +1,18 @@
 package cn.java.spring.project.entity;
-
-import lombok.Data;
+import org.springframework.stereotype.Component;
 
 /**
  * 作者: Jiang
  * 时间: 2021/9/1
- * 描述:
+ * 描述: 案例对象
  */
+@Component
 public class Person {
     private String name;
     private int age;
+
+    public Person() {
+    }
 
     public Person(String name, int age) {
         this.name = name;
@@ -38,5 +41,13 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    private void start() {
+        System.out.println("person is start.");
+    }
+
+    private void destroy() {
+        System.out.println("person is destroy.");
     }
 }

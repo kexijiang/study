@@ -1,9 +1,8 @@
-package cn.java.spring.demo.annotaion.configuration;
+package cn.java.spring.demo.annotation.configuration;
 
 import cn.java.spring.project.entity.Person;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -16,7 +15,7 @@ import java.util.Arrays;
 public class MyTest {
     @Test
     public void test(){
-        ApplicationContext app = new AnnotationConfigApplicationContext(Myconfig.class);
+        ApplicationContext app = new AnnotationConfigApplicationContext(MyConfig.class);
         Object object1 = app.getBean("person1");
         Object object2 = app.getBean("person1");
         Object object3 = app.getBean(Person.class);
